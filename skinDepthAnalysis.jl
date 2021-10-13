@@ -13,7 +13,7 @@ using UnitfulLatexify
 default(legend=:topleft, minorgrid=:true)
 
 # Load in data
-df = DataFrame(CSV.File("data/dataResistance.csv", header=2, skipto=3))
+df = DataFrame(CSV.File("dataResistance.csv", header=2, skipto=3))
 
 # Add appropriate units to dataframe columns
 df[!, "f(kHz)"] = Quantity.(df[!, "f(kHz)"], u"kHz")
@@ -94,7 +94,7 @@ end
 display(logPlt)
 
 # Load in diameters
-diametersRaw = DataFrame(CSV.File("data/dataDiameters.csv"))
+diametersRaw = DataFrame(CSV.File("dataDiameters.csv"))
 avgDiam = Array(diametersRaw[end - 1, 2:end - 2]) * 1u"mm"
 errDiam = Array(diametersRaw[end, 2:end - 2]) * 1u"mm"
 diams = avgDiam .± errDiam
